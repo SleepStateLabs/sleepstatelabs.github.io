@@ -2,7 +2,7 @@ body {
     background-color: #9C0061;
 }
 
-.logo{
+#logo{
   position:absolute;
   top:0;
   left:0;
@@ -14,4 +14,12 @@ body {
 
   background:transparent url(images/coming_soon.png) no-repeat fixed center;
   z-index:3;
+}
+
+#customForm{
+  position:absolute;
+  bottom:0;
+  margin-bottom:50px;
+  width:100%;
+  z-index:4;
 }
