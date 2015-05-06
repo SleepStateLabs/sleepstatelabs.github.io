@@ -1,5 +1,5 @@
 body {
-    background-color: #9C0061;
+  background-color: #9C0061;
 }
 
 #logo{
@@ -12,8 +12,8 @@ body {
   height:100%;
   display:block;
 
-  background:transparent url(images/coming_soon.png) no-repeat fixed center;
-  z-index:3;
+  background:transparent url(../images/coming_soon.png) no-repeat fixed center;
+  z-index:4;
 }
 
 #customForm{

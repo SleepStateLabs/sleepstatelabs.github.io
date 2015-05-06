@@ -3,8 +3,19 @@
 	<head>
 		<meta charset="utf-8">
 		<title>SleepState Labs</title>
-		<!--<link rel="stylesheet" type="text/css" href="./sky.css">-->
-		<link rel="stylesheet" type="text/css" href="./style.css">
+		<link rel="stylesheet" type="text/css" href="./styles/sky.css">
+		<link rel="stylesheet" type="text/css" href="./styles/style.css">
+
+		<script type="text/javascript" src="./scripts/mqttws31.js"></script>
+		<script type="text/javascript" src="./scripts/sleepstate-agent.js"></script>
+		<script type="text/javascript">
+			(function () {
+				var sleepStateAgent = new SleepStateAgent();
+				sleepStateAgent.onSleep = function() {
+					document.getElementById("easter-egg").style.display = 'block';
+				}
+			}());
+		</script>
 
 
 		<!--Zoho Campaigns Web-Optin Form Starts Here-->
@@ -17,31 +28,33 @@
 		<script type="text/javascript" src="https://campaigns.zoho.com/js/jquery.form.js"></script>
 		<script type="text/javascript" src="https://campaigns.zoho.com/js/optin_min.js"></script>
 		<script type="text/javascript">
-		var $ZC = jQuery.noConflict();
-		var trackingText='ZCFORMVIEW';
-		$ZC(document).ready( function($) {
-		$ZC("#zc_trackCode").val(trackingText);
-			$ZC("#fieldBorder").val($ZC("[changeItem='SIGNUP_FORM_FIELD']").css("border-color"));
-			_setOptin(false,function(th){
-			/*Before submit, if you want to trigger your event, "include your code here"*/
-		});
+			var $ZC = jQuery.noConflict();
+			var trackingText='ZCFORMVIEW';
+			$ZC(document).ready( function($) {
+				$ZC("#zc_trackCode").val(trackingText);
+					$ZC("#fieldBorder").val($ZC("[changeItem='SIGNUP_FORM_FIELD']").css("border-color"));
+					_setOptin(false,function(th){
+					/*Before submit, if you want to trigger your event, "include your code here"*/
+				});
 
-		/*Load Captcha For this*/ 
-		 loadCaptcha('https://campaigns.zoho.com/CaptchaVerify.zc?mode=generate');
+				/*Load Captcha For this*/ 
+				 loadCaptcha('https://campaigns.zoho.com/CaptchaVerify.zc?mode=generate');
 
-		 /*Tracking Enabled*/ 
-		 trackSignupEvent(trackingText);
-		 });
+				 /*Tracking Enabled*/ 
+				 trackSignupEvent(trackingText);
+			 });
 		</script>
 		<!--Zoho Campaigns Web-Optin Form Ends Here-->
 
 	</head>
 
 	<body>
-		<!--<div class="stars"></div>
-		<div class="twinkling"></div>
-		<div class="clouds"></div>-->
-		<div id="logo"></div>
+		<div style="display:none;" id="easter-egg">
+			<div id="stars"></div>
+			<div id="twinkling"></div>
+			<div id="clouds"></div>
+		</div>
+		<div id="logo" />
 
 
 		<!--Zoho Campaigns Web-Optin Form Starts Here-->
