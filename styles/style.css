@@ -2,6 +2,10 @@ body {
   background-color: #9C0061;
 }
 
+#easter-egg{
+  display:none;
+}
+
 #logo{
   position:absolute;
   top:0;
