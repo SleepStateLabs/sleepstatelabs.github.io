@@ -1,3 +1,6 @@
+/*
+	0.2.2
+*/
 var SleepStateAgent = function (name, id, config) {
 	SleepStateAgent._ip = null;
 	var self = this;
@@ -65,9 +68,9 @@ var SleepStateAgent = function (name, id, config) {
 				// Trigger Sleep
 				var response = self.onSleep();
 
-				// Respond with Metadata, if requested/provided serverId
-				if(response != null && command.serverId != null) {
-					self._client.send(_metadataMessage(command.serverId, response));
+				// Respond with Metadata, if requested/provided commanderId
+				if(response != null && command.commanderId != null) {
+					self._client.send(_metadataMessage(command.commanderId, response));
 					console.info("SleepState Agent %s responded with - %o", self._clientId, response);
 				}
 
@@ -99,14 +102,14 @@ var SleepStateAgent = function (name, id, config) {
 		return configMessage;
 	}
 
-	_metadataMessage = function(serverId, response) {
+	_metadataMessage = function(commanderId, response) {
 		response.agentName = self._name;
 		response.agentId = self._id;
 
 		var metaDataMessage = new Paho.MQTT.Message(JSON.stringify(response));
 		metaDataMessage.qos = 2;
 		metaDataMessage.retained = false;
-		metaDataMessage.destinationName = topicPrefix+SleepStateAgent._ip+"/servers/"+command.serverId;
+		metaDataMessage.destinationName = topicPrefix+SleepStateAgent._ip+"/commanders/"+command.commanderId;
 
 		return metaDataMessage;
 	}
